@@ -20,4 +20,6 @@ public class UserRegisterRequest {
     private String password;
     @Pattern(regexp = "^[0-9]{10}$", message = "Invalid mobile number format")
     private String mobile;
+    @Pattern(regexp = "^(STUDENT|ADMIN)$", message = "Invalid role")
+    private String role;
 }

@@ -35,7 +35,9 @@ public class SpringSecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable()) // Disable CSRF for stateless APIs
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/**").authenticated() // Authenticate requests starting with /api/**
+                        .requestMatchers("/api/student/**").hasRole("STUDENT") // Only STUDENT role can access
+                        .requestMatchers("/api/admin/**").hasRole("ADMIN") // Only ADMIN role can access
+                        .requestMatchers("/api/**").authenticated() // All other /api/** endpoints require authentication
                         .anyRequest().permitAll() // Allow all other requests
                 )
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
@@ -55,6 +57,7 @@ public class SpringSecurityConfig {
 
         return http.build();
     }
+
 
     @Bean
     public PasswordEncoder passwordEncoder(){

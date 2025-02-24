@@ -16,6 +16,8 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+
 @Service
 @Slf4j
 public class UserService {
@@ -46,9 +48,9 @@ public class UserService {
             user.setLastName(req.getLastName());
             user.setEmail(req.getEmail());
             user.setMobile(req.getMobile());
-
+            user.setRole(req.getRole());
             user.setPassword(encoder.encode(req.getPassword()));
-            user.setRole("USER");
+            user.setCreatedAt(LocalDateTime.now());
             repo.save(user);
             response.setMessage("User registered successfully");
             log.info("User registered successfully with email:{}", req.getEmail());// when user is registered, create an associated cart too.
@@ -67,7 +69,10 @@ public class UserService {
                     .authenticate(new UsernamePasswordAuthenticationToken(req.getEmail(),req.getPassword()));
 
             if (authentication.isAuthenticated()) {
-                response.setJwt(jwtService.generateToken(req.getEmail()));
+                //get user's role
+                String role = findByEmail(req.getEmail()).getRole();
+                log.info("Generating JWT token for user with email:{} and role:{}", req.getEmail(), role);
+                response.setJwt(jwtService.generateToken(req.getEmail(),role));
                 response.setMessage("Login successful");
             }
         } catch (AuthenticationException e) {
