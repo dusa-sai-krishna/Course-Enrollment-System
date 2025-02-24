@@ -1,84 +1,79 @@
-# 🚀 Spring Boot Starter Template
+# 🎓 Course Management System
 
-[![Java](https://img.shields.io/badge/Java-17-orange.svg)](https://www.oracle.com/java/)
-[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.4.2-brightgreen.svg)](https://spring.io/projects/spring-boot)
-[![JWT](https://img.shields.io/badge/JWT-Security-blue.svg)](https://jwt.io/)
-[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Database-blue.svg)](https://www.postgresql.org/)
-[![Swagger](https://img.shields.io/badge/Swagger-API%20Docs-green.svg)](https://swagger.io/)
+A robust and secure API-based Course Management System built with Spring Boot, featuring JWT authentication, role-based access control, and comprehensive API documentation.
 
-## ✨ Why This Template is Awesome!
+## 🚀 Tech Stack
 
-Want to kickstart your Spring Boot project with all the cool features already set up? You're in the right place! This template is packed with everything you need to build a modern, secure, and well-documented API. No more boring setup - we've got you covered! 🎉
+- **Java 17**
+- **Spring Boot 3.4.2**
+- **Spring Security** with JWT Authentication
+- **Spring Data JPA** for data persistence
+- **PostgreSQL** for database
+- **OpenAPI/Swagger** for API documentation
+- **Lombok** for reducing boilerplate code
+- **Maven** for dependency management
 
-## 🛠️ Tech Stack & Features
+## ✨ Key Features
 
-### Core Technologies
-- **Java 17** - Latest LTS version for maximum performance and features
-- **Spring Boot 3.4.2** - The latest and greatest of Spring Boot
-- **PostgreSQL** - Rock-solid database for your data
-- **Maven** - Dependency management made easy
+### Authentication & Security
+- JWT-based authentication system
+- Secure endpoints with role-based access control
+- Password encryption and secure token handling
 
-### 🔐 Security Features
-- **JWT Authentication** - Secure token-based authentication
-- **Role-Based Access Control** - Built-in ADMIN and STUDENT roles
-- **Spring Security** - Industry-standard security configuration
-- **Password Encryption** - Keep your users' data safe
+### Course Management
+- Course creation and management (Admin access)
+- Student enrollment system
+- Course scheduling functionality
+- Detailed course information tracking
 
-### 💡 Developer Experience
-- **Swagger UI** - Beautiful API documentation at `/docs`
-- **Exception Handling** - Global exception handling for clean error responses
-- **Spring Data JPA** - Simplified database operations
-- **Lombok** - Say goodbye to boilerplate code
-- **Spring Boot DevTools** - Hot reloading for faster development
+### API Features
+- RESTful API design
+- Comprehensive error handling
+- Request validation
+- Pagination support for data retrieval
 
-### 🎯 Pre-built Features
-- User Registration & Authentication
-- Course Management System
-- Role-based API endpoints
-- Input Validation
-- API Response DTOs
-- Clean Architecture
+### Documentation & Development
+- Interactive API documentation with Swagger UI
+- Detailed API specifications and examples
+- Development-friendly features with Spring Boot DevTools
 
-## 🚀 Quick Start
+## 🔒 API Security
 
-1. Clone this repository
-2. Configure your PostgreSQL database in `application.properties`
-3. Run the application
-4. Visit `/docs` for interactive API documentation
+The API uses Bearer token authentication. All protected endpoints require a valid JWT token in the Authorization header:
+```
+Authorization: Bearer <your_jwt_token>
+```
 
-## 🎨 API Endpoints
+## 📚 API Documentation
 
-- 🔑 **Auth Endpoints**
-  - POST `/auth/register` - Register new users
-  - POST `/auth/login` - Authenticate and get JWT
+The API documentation is available through Swagger UI at:
+```
+http://<your-server>/swagger-ui.html
+```
 
-- 📚 **Course Management**
-  - GET `/api/admin/course/` - Health check
-  - POST `/api/admin/course/add` - Add new course
-  - GET `/api/admin/course/id/{courseId}` - Get course details
+## 🛠️ Getting Started
 
-## 🌈 What Makes This Template Special?
+1. Clone the repository
+2. Configure PostgreSQL database settings in `application.properties`
+3. Run `mvn clean install` to build the project
+4. Start the application using `mvn spring-boot:run`
+5. Access Swagger UI to explore and test the APIs
 
-- 🎯 **Production-Ready**: Built with best practices and real-world scenarios in mind
-- 🛡️ **Secure by Default**: JWT + Spring Security configuration out of the box
-- 📖 **Well-Documented**: Swagger UI integration for interactive API exploration
-- 🎨 **Clean Architecture**: Organized codebase with clear separation of concerns
-- 🚀 **Ready to Scale**: Built on modern Spring Boot with proven patterns
+## 💡 Key Endpoints
 
-## 🌟 Perfect For
-- Building secure REST APIs
-- Educational platforms
-- Starting new Spring Boot projects
-- Learning best practices
+### Authentication
+- `POST /auth/register` - Register a new user
+- `POST /auth/login` - Authenticate and get JWT token
+
+### Course Management (Admin)
+- `POST /api/admin/course/add` - Create a new course
+- `GET /api/admin/course/id/{courseId}` - Get course details
+- Additional endpoints for course management and student operations
 
 ## 🤝 Contributing
 
-Feel free to contribute! Whether it's bug fixes, new features, or improvements to the documentation - all contributions are welcome!
+Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## 📝 License
 
-This project is open-source and available under the MIT License.
-
----
-
-Happy Coding! 🎉 Remember, great applications start with great foundations! 🚀
+This project is licensed under the [MIT License](LICENSE).
